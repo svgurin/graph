@@ -1,31 +1,17 @@
-import java.util.*;
+public class Edge {
+    private int node;
+    private int nextNode;
 
-public class Edge<T> {
-    private T value;
-    private List<Integer> vertex;
-
-    public Edge(T value) {
-        this.value = value;
-        this.vertex = new ArrayList<Integer>();
+    public Edge(int node, int nextNode) {
+        this.node = node;
+        this.nextNode = nextNode;
     }
 
-    public List<Integer> getVertex() {
-        return vertex;
+    public int getNode() {
+        return node;
     }
 
-    public void setVertex(Integer vertex) {
-        this.vertex.add(vertex);
-    }
-
-    public T getValue() {
-        return value;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Edge<?> edge = (Edge<?>) o;
-        return value.equals(edge.value);
+    public int getNextNode() {
+        return nextNode;
     }
 }

@@ -1,17 +1,35 @@
-public class Vertex {
-    private int node;
-    private int nextNode;
+import java.util.*;
 
-    public Vertex(int node, int nextNode) {
-        this.node = node;
-        this.nextNode = nextNode;
+public class Vertex<T> {
+    private T value;
+    private List<Integer> edge;
+
+    public Vertex(T value) {
+        this.value = value;
+        this.edge = new ArrayList<Integer>();
     }
 
-    public int getNode() {
-        return node;
+    public T getValue() {
+        return value;
     }
 
-    public int getNextNode() {
-        return nextNode;
+    public void setValue(T value) {
+        this.value = value;
+    }
+
+    public List<Integer> getEdge() {
+        return edge;
+    }
+
+    public void setEdge(Integer edge) {
+        this.edge.add(edge);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Vertex<?> vertex = (Vertex<?>) o;
+        return value.equals(vertex.value);
     }
 }
