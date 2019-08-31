@@ -2,8 +2,8 @@ import java.util.*;
 
 public class GraphLib<T> {
     private boolean oriented;
-    private List<Vertex> vertexList = Collections.synchronizedList(new ArrayList<>());
-    private List<Edge<T>> edgeList = Collections.synchronizedList(new ArrayList<>());
+    private List<Vertex> vertexList = Collections.synchronizedList(new ArrayList<Vertex>());
+    private List<Edge<T>> edgeList = Collections.synchronizedList(new ArrayList<Edge<T>>());
 
     public GraphLib(boolean oriented) {
         this.oriented = oriented;
@@ -31,15 +31,15 @@ public class GraphLib<T> {
         if (fromId == null || toId == null || edgeList.get(fromId).getVertex().isEmpty())
             return Collections.EMPTY_LIST;
         int [] markEdge = new int[edgeList.size()];
-        Stack<Integer> path = new Stack<>();
-        List<List<T>> result = new ArrayList<>();
+        Stack<Integer> path = new Stack<Integer>();
+        List<List<T>> result = new ArrayList<List<T>>();
         getPathWithId(fromId, toId, markEdge, path);
         while (!path.empty()){
             Integer idVertex = path.pop();
             Vertex vertex = vertexList.get(idVertex);
             T fromValue = edgeList.get(vertex.getNode()).getValue();
             T toValue = edgeList.get(vertex.getNextNode()).getValue();
-            List<T> pair = new ArrayList<>();
+            List<T> pair = new ArrayList<T>();
             pair.add(fromValue);
             pair.add(toValue);
             result.add(0,pair);

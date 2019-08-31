@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Edge<T> {
     private T value;
@@ -8,7 +6,7 @@ public class Edge<T> {
 
     public Edge(T value) {
         this.value = value;
-        this.vertex = new ArrayList<>();
+        this.vertex = new ArrayList<Integer>();
     }
 
     public List<Integer> getVertex() {
@@ -29,10 +27,5 @@ public class Edge<T> {
         if (o == null || getClass() != o.getClass()) return false;
         Edge<?> edge = (Edge<?>) o;
         return value.equals(edge.value);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(value);
     }
 }
